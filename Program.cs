@@ -12,7 +12,7 @@ internal class Program
         players.AddPlayer(player2);
         Player player3 = new("Alex", 30);
         players.AddPlayer(player3);
-        
+
         players.ShowPlayers();
         Console.WriteLine("Нажмите клавишу, чтобы очистить вывод" +
                           " и проверить следующие методы");
@@ -22,7 +22,7 @@ internal class Program
         Console.SetCursorPosition(0, 0);
         Console.Write("\f\u001bc\x1B[3J");
         Console.SetCursorPosition(0, 0);
-        
+
         Console.WriteLine("Игроки до изменений:\n");
         players.ShowPlayers();
 
@@ -32,7 +32,7 @@ internal class Program
         Console.WriteLine("\nЗабанили Даника, удалили Олега" +
                           "\nИгроки после изменений:");
         players.ShowPlayers();
-        
+
         Console.WriteLine("\nРазбаним Даника");
         players.UnbanPlayerID(players.GetPlayerId("Danik"));
         players.ShowPlayers();
