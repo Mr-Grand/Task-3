@@ -49,6 +49,7 @@ public class PlayerDataBase
             if (player.Id == playerId)
             {
                 player.Unban();
+                break;
             }
         }
     }
