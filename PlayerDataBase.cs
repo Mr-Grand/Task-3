@@ -2,11 +2,11 @@
 
 public class PlayerDataBase
 {
-    private List<Player> players = new();
+    private List<Player> _players = new();
 
     public void ShowPlayers()
     {
-        foreach (Player player in players)
+        foreach (Player player in _players)
         {
             Console.WriteLine(new string('-', 20));
             player.ShowPlayerInfo();
@@ -15,46 +15,41 @@ public class PlayerDataBase
 
     public void AddPlayer(Player player)
     {
-        players.Add(player);
+        _players.Add(player);
     }
 
-    public void RemovePlayer(Guid playerId)
+    public void RemovePlayer(int playerId)
     {
-        int index = 0; // Сохраняем номер обьекта по индексу и удаляем его потом.
-        // т.к. Нельзя удалять обьект во время цикла его перебора
-        foreach (Player player in players)
+        for (int i = 0; i <= _players.Count - 1; i++)
+        {
+            if (_players[i].Id == playerId)
+            {
+                _players.RemoveAt(i);
+                break;
+            }
+        }
+    }
+    
+    public void BanPlayerId(int playerId)
+    {
+        foreach (Player player in _players)
+        {
             if (player.Id == playerId)
-                index = players.IndexOf(player);
-        players.RemoveAt(index);
-    }
-
-    public Guid GetPlayerId(string name)
-    {
-        foreach (Player player in players)
-            if (player.UserName == name)
-                return player.Id;
-        return Guid.Empty;
-    }
-
-    public Guid GetPlayerId(int index)
-    {
-        if (index <= players.Count)
-            return players.ElementAt(index - 1).Id;
-        else
-            return Guid.Empty; //Метод обязан что-то возвращать
-    }
-
-    public void BanPlayerID(Guid playerId)
-    {
-        foreach (Player player in players)
-            if (player.Id == playerId)
+            {
                 player.Ban();
+                break;
+            }
+        }
     }
 
-    public void UnbanPlayerID(Guid playerId)
+    public void UnbanPlayerId(int playerId)
     {
-        foreach (Player player in players)
+        foreach (Player player in _players)
+        {
             if (player.Id == playerId)
+            {
                 player.Unban();
+            }
+        }
     }
 }

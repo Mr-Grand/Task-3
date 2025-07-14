@@ -20,21 +20,21 @@ internal class Program
         Console.ReadKey(true);
         Console.Clear();
         Console.SetCursorPosition(0, 0);
-        Console.Write("\f\u001bc\x1B[3J");
+        Console.Write("\f\u001bc\x1B[3J"); // Console.Clear не чистит всю консоль
         Console.SetCursorPosition(0, 0);
 
         Console.WriteLine("Игроки до изменений:\n");
         players.ShowPlayers();
 
-        players.BanPlayerID(players.GetPlayerId(1)); // Баним первого игрока
-        players.RemovePlayer(players.GetPlayerId("Oleg")); // Удаляем игрока по имени
+        players.BanPlayerId(1); // Баним первого игрока
+        players.RemovePlayer(2); // Удаляем игрока по имени
 
         Console.WriteLine("\nЗабанили Даника, удалили Олега" +
                           "\nИгроки после изменений:");
         players.ShowPlayers();
 
         Console.WriteLine("\nРазбаним Даника");
-        players.UnbanPlayerID(players.GetPlayerId("Danik"));
-        players.ShowPlayers();
+        players.UnbanPlayerId(1);
+        players.ShowPlayers(); 
     }
 }
