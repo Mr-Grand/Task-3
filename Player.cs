@@ -4,6 +4,7 @@ public class Player
 {
     private static int _counter = 1; // Добавил статик счетчик для реализации простого айди вместо Guid
     private static List<int> _allIds = new();
+    
     public int Id { get; private set; }
     public string UserName { get; private set; }
     public int Level { get; private set; }
